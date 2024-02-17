@@ -1,5 +1,5 @@
 # Tesla Car UI
 
-### Creating Tesla UI with C++' framework of Qt
+### Recreating Tesla UI with C++' framework of Qt
 
 
