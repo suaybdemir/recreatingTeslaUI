@@ -67,6 +67,21 @@ Rectangle{
                    }
            }
 
+        Image{
+            id:lockIcon
+            anchors{
+                left:parent.left
+                top:parent.top
+                margins: 20
+            }
+
+            width: parent.width / 40
+            fillMode: Image.PreserveAspectFit
+            source:{ systemHandler.carLocked ? "qrc:/ui/assets/lock.png" : "qrc:/ui/assets/unlock.png"
+
+            }
+        }
+
 
 
     width: parent.width * 2/3
