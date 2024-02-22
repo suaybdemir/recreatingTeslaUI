@@ -75,11 +75,11 @@ Rectangle{
                 margins: 20
             }
 
-            width: parent.width / 40
+            width: parent.width / 30
             fillMode: Image.PreserveAspectFit
-            source:{ systemHandler.carLocked ? "qrc:/ui/assets/lock.png" : "qrc:/ui/assets/unlock.png"
+            source:(systemHandler.CarLocked ? "qrc:/ui/assets/lock.png" : "qrc:/ui/assets/unlock.png")
 
-            }
+
         }
 
 
