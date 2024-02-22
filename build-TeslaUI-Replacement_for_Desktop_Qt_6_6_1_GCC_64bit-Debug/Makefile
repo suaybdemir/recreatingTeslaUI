@@ -52,9 +52,13 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../TeslaUI/main.cpp qrc_qml.cpp
-OBJECTS       = main.o \
-		qrc_qml.o
+SOURCES       = ../TeslaUI/Controllers/system.cpp \
+		../TeslaUI/main.cpp qrc_qml.cpp \
+		moc_system.cpp
+OBJECTS       = system.o \
+		main.o \
+		qrc_qml.o \
+		moc_system.o
 DIST          = ../../../Qt/6.6.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/common/unix.conf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/common/linux.conf \
@@ -266,7 +270,8 @@ DIST          = ../../../Qt/6.6.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/exceptions.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/yacc.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/lex.prf \
-		../TeslaUI/TeslaUI.pro  ../TeslaUI/main.cpp
+		../TeslaUI/TeslaUI.pro ../TeslaUI/Controllers/system.h ../TeslaUI/Controllers/system.cpp \
+		../TeslaUI/main.cpp
 QMAKE_TARGET  = TeslaUI
 DESTDIR       = 
 TARGET        = TeslaUI
@@ -735,7 +740,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../TeslaUI/qml.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/6.6.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../TeslaUI/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../TeslaUI/Controllers/system.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../TeslaUI/Controllers/system.cpp ../TeslaUI/main.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -780,8 +786,110 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/6.6.2/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -Wextra -fPIC -dM -E -o moc_predefs.h ../../../Qt/6.6.2/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_system.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_system.cpp
+moc_system.cpp: ../TeslaUI/Controllers/system.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/QObject \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtversionchecks.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtconfiginclude.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtconfigmacros.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtcoreexports.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtdeprecationmarkers.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtpreprocessorsupport.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qassert.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtnoop.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtypes.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtversion.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtclasshelpermacros.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcompare_impl.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qconstructormacros.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qdarwinhelpers.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qexceptionhandling.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qforeach.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qttypetraits.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qfunctionpointer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qmalloc.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qminmax.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qoverload.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qswap.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtenvironmentvariables.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtresource.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qttranslation.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtmetamacros.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qfunctionaltools_impl.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringview.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qpair.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qarraydataops.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qxptype_traits.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/q20functional.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/q20memory.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbytearrayview.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringfwd.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/q20type_traits.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qlatin1stringview.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qanystringview.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qutf8stringview.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcompare.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qdatastream.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qiodevicebase.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qfloat16.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qmath.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qiterable.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qmetacontainer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcontainerinfo.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtaggedpointer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qscopeguard.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbindingstorage.h \
+		moc_predefs.h \
+		../../../Qt/6.6.2/gcc_64/libexec/moc
+	/home/ubuntu/Qt/6.6.2/gcc_64/libexec/moc $(DEFINES) --include /home/ubuntu/Documents/recreatingTeslaUI/build-TeslaUI-Replacement_for_Desktop_Qt_6_6_1_GCC_64bit-Debug/moc_predefs.h -I/home/ubuntu/Qt/6.6.2/gcc_64/mkspecs/linux-g++ -I/home/ubuntu/Documents/recreatingTeslaUI/TeslaUI -I/home/ubuntu/Qt/6.6.2/gcc_64/include -I/home/ubuntu/Qt/6.6.2/gcc_64/include/QtQuick -I/home/ubuntu/Qt/6.6.2/gcc_64/include/QtOpenGL -I/home/ubuntu/Qt/6.6.2/gcc_64/include/QtGui -I/home/ubuntu/Qt/6.6.2/gcc_64/include/QtQmlModels -I/home/ubuntu/Qt/6.6.2/gcc_64/include/QtQml -I/home/ubuntu/Qt/6.6.2/gcc_64/include/QtQmlIntegration -I/home/ubuntu/Qt/6.6.2/gcc_64/include/QtNetwork -I/home/ubuntu/Qt/6.6.2/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../TeslaUI/Controllers/system.h -o moc_system.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
@@ -792,9 +900,108 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
+
+system.o: ../TeslaUI/Controllers/system.cpp ../TeslaUI/Controllers/system.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/QObject \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtversionchecks.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtconfiginclude.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtconfigmacros.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtcoreexports.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtdeprecationmarkers.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtpreprocessorsupport.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qassert.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtnoop.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtypes.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtversion.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtclasshelpermacros.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcompare_impl.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qconstructormacros.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qdarwinhelpers.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qexceptionhandling.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qforeach.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qttypetraits.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qfunctionpointer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qmalloc.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qminmax.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qoverload.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qswap.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtenvironmentvariables.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtresource.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qttranslation.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtmetamacros.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qfunctionaltools_impl.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringview.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qpair.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qarraydataops.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qxptype_traits.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/q20functional.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/q20memory.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbytearrayview.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringfwd.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/q20type_traits.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qlatin1stringview.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qanystringview.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qutf8stringview.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcompare.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qdatastream.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qiodevicebase.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qfloat16.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qmath.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qiterable.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qmetacontainer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qcontainerinfo.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qtaggedpointer.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qscopeguard.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt/6.6.2/gcc_64/include/QtCore/qbindingstorage.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o system.o ../TeslaUI/Controllers/system.cpp
 
 main.o: ../TeslaUI/main.cpp ../../../Qt/6.6.2/gcc_64/include/QtGui/QGuiApplication \
 		../../../Qt/6.6.2/gcc_64/include/QtGui/qguiapplication.h \
@@ -969,6 +1176,9 @@ main.o: ../TeslaUI/main.cpp ../../../Qt/6.6.2/gcc_64/include/QtGui/QGuiApplicati
 
 qrc_qml.o: qrc_qml.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_qml.o qrc_qml.cpp
+
+moc_system.o: moc_system.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_system.o moc_system.cpp
 
 ####### Install
 
