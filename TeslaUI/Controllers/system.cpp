@@ -4,6 +4,7 @@ System::System(QObject *parent)
     : QObject{parent}
     ,m_CarLocked(true)
     ,m_OutdoorTemp(64)
+    ,m_UserName("User Name")
 {
 
 }
@@ -32,4 +33,17 @@ void System::setOutdoorTemp(int newOutdoorTemp)
         return;
     m_OutdoorTemp = newOutdoorTemp;
     emit OutdoorTempChanged();
+}
+
+QString System::UserName() const
+{
+    return m_UserName;
+}
+
+void System::setUserName(const QString &newUserName)
+{
+    if (m_UserName == newUserName)
+        return;
+    m_UserName = newUserName;
+    emit UserNameChanged();
 }
