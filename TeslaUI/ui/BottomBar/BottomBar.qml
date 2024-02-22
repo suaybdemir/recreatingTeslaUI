@@ -14,11 +14,18 @@ Rectangle{
     Image{
         id: carSettingsIcon
         anchors{
+<<<<<<< HEAD
             left:parent.left
             leftMargin:30
             verticalCenter: parent.verticalCenter
         }
 
+=======
+            left: parent.left
+            leftMargin:30
+            verticalCenter: parent.verticalCenter
+        }
+>>>>>>> refs/remotes/origin/main
         height: parent.height * .85
         fillMode: Image.PreserveAspectFit
 
