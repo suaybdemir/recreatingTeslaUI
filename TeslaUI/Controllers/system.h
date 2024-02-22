@@ -2,6 +2,7 @@
 #define SYSTEM_H
 
 #include <QObject>
+#include <QProperty>
 
 class System : public QObject
 {

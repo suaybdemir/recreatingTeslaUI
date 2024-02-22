@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <Controllers/system.h>
+
 #include <QQmlContext>
 
 
@@ -26,8 +27,8 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
     engine.load(url);
 
-    QQmlContext *context(engine.rootContext());
-    context->setContextProperty("systemHandler",&m_systemHandler);
+    QQmlContext *context = engine.rootContext();
+    context->setContextProperty("systemHandler", &m_systemHandler);
 
     return app.exec();
 }

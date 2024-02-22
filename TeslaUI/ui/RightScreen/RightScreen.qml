@@ -78,7 +78,10 @@ Rectangle{
             width: parent.width / 30
             fillMode: Image.PreserveAspectFit
             source:(systemHandler.CarLocked ? "qrc:/ui/assets/lock.png" : "qrc:/ui/assets/unlock.png")
-
+            MouseArea{
+                anchors.fill: parent
+                onClicked: systemHandler.setCarLocked(!systemHandler.CarLocked)
+            }
 
         }
 
