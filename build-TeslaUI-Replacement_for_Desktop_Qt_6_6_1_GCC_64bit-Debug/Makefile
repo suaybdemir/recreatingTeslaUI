@@ -245,6 +245,7 @@ DIST          = ../../../Qt/6.6.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/spec_post.prf \
+		../TeslaUI/.qmake.stash \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -467,6 +468,7 @@ Makefile: ../TeslaUI/TeslaUI.pro ../../../Qt/6.6.2/gcc_64/mkspecs/linux-g++/qmak
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../../Qt/6.6.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -687,6 +689,7 @@ Makefile: ../TeslaUI/TeslaUI.pro ../../../Qt/6.6.2/gcc_64/mkspecs/linux-g++/qmak
 ../../../Qt/6.6.2/gcc_64/mkspecs/features/qt_config.prf:
 ../../../Qt/6.6.2/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../Qt/6.6.2/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/6.6.2/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/6.6.2/gcc_64/mkspecs/features/toolchain.prf:
 ../../../Qt/6.6.2/gcc_64/mkspecs/features/default_pre.prf:
@@ -761,7 +764,14 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_qml.cpp
 qrc_qml.cpp: ../TeslaUI/qml.qrc \
 		../../../Qt/6.6.2/gcc_64/libexec/rcc \
-		../TeslaUI/main.qml
+		../TeslaUI/main.qml \
+		../TeslaUI/ui/RightScreen/RightScreen.qml \
+		../TeslaUI/ui/BottomBar/BottomBar.qml \
+		../TeslaUI/ui/LeftScreen/LeftScreen.qml \
+		../TeslaUI/ui/assets/unlock.png \
+		../TeslaUI/ui/assets/carRender.jpg \
+		../TeslaUI/ui/assets/car.png \
+		../TeslaUI/ui/assets/lock.png
 	/home/ubuntu/Qt/6.6.2/gcc_64/libexec/rcc -name qml ../TeslaUI/qml.qrc -o qrc_qml.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
