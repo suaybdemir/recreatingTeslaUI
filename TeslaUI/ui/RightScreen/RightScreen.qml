@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtPositioning
 import QtLocation
+import com.company.system 1.0
 
 Rectangle{
     id:rightScreen
@@ -83,6 +84,21 @@ Rectangle{
                 onClicked: systemHandler.setCarLocked(!systemHandler.CarLocked)
             }
 
+        }
+
+        Text{
+            id: dateTimeDisplay
+            anchors{
+                left:lockIcon.right
+                leftMargin: 40
+                bottom:lockIcon.bottom
+            }
+
+            font.pixelSize: 12
+            font.bold: true
+            color:"black"
+
+            text : systemHandler.CurrentTime
         }
 
 

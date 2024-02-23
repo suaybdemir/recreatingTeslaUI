@@ -1,7 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <Controllers/system.h>
-
 #include <QQmlContext>
 
 
@@ -11,6 +10,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
     QGuiApplication app(argc, argv);
+
+    qmlRegisterType<System>("com.company.system",1,0,"System");
 
     System m_systemHandler;
 
