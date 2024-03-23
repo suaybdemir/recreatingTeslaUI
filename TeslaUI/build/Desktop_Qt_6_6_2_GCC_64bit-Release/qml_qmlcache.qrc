@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">../../main.qml</file>
+        <file alias="ui/RightScreen/RightScreen.qml">../../ui/RightScreen/RightScreen.qml</file>
+        <file alias="ui/LeftScreen/LeftScreen.qml">../../ui/LeftScreen/LeftScreen.qml</file>
+        <file alias="ui/BottomBar/BottomBar.qml">../../ui/BottomBar/BottomBar.qml</file>
+        <file alias="ui/assets/car.png">../../ui/assets/car.png</file>
+        <file alias="ui/assets/carRender.jpg">../../ui/assets/carRender.jpg</file>
+        <file alias="ui/assets/lock.png">../../ui/assets/lock.png</file>
+        <file alias="ui/assets/unlock.png">../../ui/assets/unlock.png</file>
+    </qresource>
+</RCC>

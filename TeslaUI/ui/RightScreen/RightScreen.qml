@@ -1,7 +1,6 @@
 import QtQuick 2.15
 import QtPositioning
 import QtLocation
-import com.company.system 1.0
 
 Rectangle{
     id:rightScreen
@@ -78,7 +77,7 @@ Rectangle{
 
             width: parent.width / 30
             fillMode: Image.PreserveAspectFit
-            source:(systemHandler.CarLocked ? "qrc:/ui/assets/lock.png" : "qrc:/ui/assets/unlock.png")
+            source:(systemHandler.CarLocked ? "qrc:/ui/assets/unlock.png" : "qrc:/ui/assets/lock.png")
             MouseArea{
                 anchors.fill: parent
                 onClicked: systemHandler.setCarLocked(!systemHandler.CarLocked)

@@ -4,12 +4,10 @@
 #include <QObject>
 #include <QProperty>
 #include <QTimer>
-#include <QtQml>
 
 class System : public QObject
 {
     Q_OBJECT
-    QML_ELEMENT
     Q_PROPERTY(bool CarLocked READ CarLocked WRITE setCarLocked NOTIFY CarLockedChanged FINAL)
     Q_PROPERTY(int OutdoorTemp READ OutdoorTemp WRITE setOutdoorTemp NOTIFY OutdoorTempChanged FINAL)
     Q_PROPERTY(QString UserName READ UserName WRITE setUserName NOTIFY UserNameChanged FINAL)

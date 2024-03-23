@@ -11,8 +11,6 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<System>("com.company.system",1,0,"System");
-
     System m_systemHandler;
 
     QQmlApplicationEngine engine;
@@ -28,7 +26,7 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
     engine.load(url);
 
-    QQmlContext *context = engine.rootContext();
+    QQmlContext *context(engine.rootContext());
     context->setContextProperty("systemHandler", &m_systemHandler);
 
     return app.exec();
