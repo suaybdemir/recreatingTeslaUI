@@ -16,7 +16,7 @@ public:
     explicit System(QObject *parent = nullptr);
 
     bool CarLocked() const;
-    void setCarLocked(bool newCarLocked);
+
 
     int OutdoorTemp() const;
     void setOutdoorTemp(int newOutdoorTemp);
@@ -28,6 +28,7 @@ public:
     void setCurrentTime(const QString &newCurrentTime);
 
 public slots:
+    void setCarLocked(bool newCarLocked);
     void CurrentTimeTimerTimeout();
 
 signals:

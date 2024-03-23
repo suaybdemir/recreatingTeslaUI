@@ -72,7 +72,7 @@ void System::setCurrentTime(const QString &newCurrentTime)
 void System::CurrentTimeTimerTimeout()
 {
     QDateTime dateTime;
-    QString CurrentTime= dateTime.toString("h:m ap");
+    QString CurrentTime= dateTime.currentDateTime().toString("h:mm ap");
 
     setCurrentTime(CurrentTime);
 

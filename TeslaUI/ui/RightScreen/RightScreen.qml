@@ -100,6 +100,36 @@ Rectangle{
             text : systemHandler.CurrentTime
         }
 
+        Text{
+            id: outdoorTemperatureDisplay
+            anchors{
+                left:dateTimeDisplay.right
+                leftMargin: 40
+                bottom:lockIcon.bottom
+            }
+
+            font.pixelSize: 12
+            font.bold: true
+            color:"black"
+
+            text : systemHandler.OutdoorTemp + "°F"
+        }
+
+        Text{
+            id: userNameDisplay
+            anchors{
+                left:outdoorTemperatureDisplay.right
+                leftMargin: 40
+                bottom:lockIcon.bottom
+            }
+
+            font.pixelSize: 12
+            font.bold: true
+            color:"black"
+
+            text : systemHandler.UserName
+        }
+
 
 
     width: parent.width * 2/3
