@@ -2,6 +2,10 @@
 
 ### Recreating Tesla UI with Qt
 
-<a href="https://ibb.co/d2W9S2F"><img src="https://i.ibb.co/YkR96km/Screenshot-from-2024-02-22-15-39-36.png" alt="Screenshot-from-2024-02-22-15-39-36" border="0"></a>
+<p aling="center"><img src="https://i.ibb.co/bzVHL5g/Screenshot-from-2024-04-01-00-44-14.png" width="350" heigt="300" alt="img1" border="0"></p>
+
+<br>
+
+<p aling="center"><img src="https://i.ibb.co/w7QhhPY/Screenshot-from-2024-04-01-00-42-16.png" width="350" heigt="300" alt="img2" border="0"></p>
 
 ---
