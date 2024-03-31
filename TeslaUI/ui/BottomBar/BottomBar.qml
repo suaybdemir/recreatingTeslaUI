@@ -24,4 +24,34 @@ Rectangle{
 
         source: "qrc:/ui/assets/car.png"
     }
+
+    HVACComponent
+    {
+        id: driverHVACControl
+        anchors{
+            top:parent.top
+            bottom: parent.bottom
+            right: parent.right
+            rightMargin:150
+
+        }
+
+        hvacController: driverHVAC
+    }
+
+    HVACComponent
+    {
+        id: passengerHVACControl
+        anchors{
+            top:parent.top
+            bottom: parent.bottom
+            left:carSettingsIcon.right
+            leftMargin: 150
+
+        }
+
+        hvacController: passengerHVAC
+    }
+
+
 }

@@ -24,7 +24,7 @@ Rectangle
 
     Text{
         id:navigationPlaceHolderText
-        color:"#black"
+        color:"black"
         text: "Navigate"
         anchors{
             verticalCenter: parent.verticalCenter

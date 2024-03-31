@@ -9,5 +9,10 @@
         <file>ui/assets/lock.png</file>
         <file>ui/assets/unlock.png</file>
         <file>ui/RightScreen/NavigationSearchBox.qml</file>
+        <file>ui/assets/search.png</file>
+        <file>ui/BottomBar/HVACComponent.qml</file>
+        <file>ui/assets/volume0.png</file>
+        <file>ui/assets/volume1.png</file>
+        <file>ui/assets/volume2.png</file>
     </qresource>
 </RCC>
