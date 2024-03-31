@@ -4,6 +4,17 @@ Item {
     property string fontColor: "#f0eded"
     property var hvacController
 
+    width: 90 * (parent.width / 1280)
+
+    // Rectangle{
+    //     anchors{
+    //         left: decrementButton.left
+    //         right: incrementButton.right
+    //     }
+
+    //     Component.onCompleted: console.log(width)
+    // }
+
     Rectangle{
         id: decrementButton
         anchors{

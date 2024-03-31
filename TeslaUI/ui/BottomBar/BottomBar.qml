@@ -31,10 +31,11 @@ Rectangle{
         anchors{
             top:parent.top
             bottom: parent.bottom
-            right: parent.right
-            rightMargin:150
+            left:carSettingsIcon.right
+            leftMargin: 150
 
         }
+
 
         hvacController: driverHVAC
     }
@@ -45,12 +46,25 @@ Rectangle{
         anchors{
             top:parent.top
             bottom: parent.bottom
-            left:carSettingsIcon.right
-            leftMargin: 150
+            right: volumeControl.left
+            rightMargin:150
 
         }
 
+
         hvacController: passengerHVAC
+    }
+
+    VolumeControlComponent
+    {
+        id: volumeControl
+        anchors{
+            right:parent.right
+            rightMargin:30
+            top: parent.top
+            bottom: parent.bottom
+        }
+
     }
 
 
