@@ -14,5 +14,6 @@
         <file>ui/assets/volume0.png</file>
         <file>ui/assets/volume1.png</file>
         <file>ui/assets/volume2.png</file>
+        <file>ui/BottomBar/VolumeControlComponent.qml</file>
     </qresource>
 </RCC>

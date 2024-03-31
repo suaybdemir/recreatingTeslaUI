@@ -7,7 +7,7 @@ import "ui/RightScreen"
 import "ui/BottomBar"
 Window {
     width: 1280
-    height: 720
+    height: 1024
     visible: true
     title: qsTr("Tesla")
 
